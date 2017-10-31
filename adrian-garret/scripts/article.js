@@ -20,7 +20,6 @@ Article.prototype.toHtml = function() {
   this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
 
   // COMMENT: What is going on in the line below? What do the question mark and colon represent? How have we seen this same logic represented previously?
-  // Not sure? Check the docs!
   // ? = if true do this - : if false do this ...if else statements.
   this.publishStatus = this.publishedOn ? `published ${this.daysAgo} days ago` : '(draft)';
   this.body = marked(this.body);
@@ -70,6 +69,6 @@ Article.fetchAll = () => {
     })
 
     // COMMENT: Discuss the sequence of execution in this 'else' conditional. Why are these functions executed in this order?
-    // PUT YOUR RESPONSE HERE
+    // The first execution is basically a value for the 'rawData' object being the entire JSON file of articles. Next we needed to cache the data into localStorage in order to pull it from localStorage in our index page. Next we have to load all into actual Article ojbects as well as sort them with our loadAll function. And finally we then initialize our Index page with all of the new articles.
   }
 }
